@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Country Result</title>
+</head>
+<body>
+    <h1>Search Result for: {{ search_query }}</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Capital</th>
+                <th>Flag</th>
+                <th>Country Code</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for country in countries %}
+            <tr>
+                <td>{{ country.name }}</td>
+                <td>{{ country.capital }}</td>
+                <td><img src="{{ country.flag }}" alt="{{ country.name }} flag" width="50"></td>
+                <td>{{ country.country_code }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4">No country found matching the search query.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'all_countries' %}">Back to All Countries</a>
+</body>
+</html>

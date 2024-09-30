@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>All Country</h1>
+    <form action="" method="GET">
+        <input type="text" name="search" placeholder="Search Country">
+        <a href="{% url 'search' %}"><button type="submit">Search</button></a>
+    </form>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Capital</th>
+                <th>Flag</th>
+                <th>Country Code</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for country in countries %}
+                <tr>
+                    <td>{{ country.name.common }}</td>
+                    <td>{{ country.capital }}</td>
+                    <td><img src="{{ country.flags.png }}" alt="{{ country.name.common }}" width="25" height="25"></td>
+                    <td>{{ country.cca2 }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
